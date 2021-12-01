@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@media screen and (min-width: 768px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/**
+   * Body CSS
+   */
+body {
+  margin: 0;
+  padding: 0px;
+}
+
+// .app-root {
+//   padding: 0px;
+//   margin: 0;
+// }
+
+html,
+body,
+input,
+textarea,
+button {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}

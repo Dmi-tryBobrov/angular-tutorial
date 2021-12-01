@@ -1,0 +1,44 @@
+/**
+    * Header CSS
+    */
+.header-container {
+  position: sticky;
+  margin: 0;
+  /* top: 0px; */
+  //   min-width: 100vw;
+  display: flex;
+  flex-flow: row nowrap;
+  height: 3rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: indigo;
+  color: #fff;
+}
+
+.header-title {
+  margin-left: 2rem;
+  font-size: 1.5rem;
+}
+
+.header-menu {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  margin-right: 2rem;
+}
+
+.header-menu_about,
+.header-menu_login {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  font-size: 1.25rem;
+  user-select: none;
+}
+.header-menu_login .material-icons {
+  /* font-size: 1.25rem; */
+  vertical-align: middle;
+}
+
+.header-menu_login:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
