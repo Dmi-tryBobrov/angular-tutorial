@@ -1,13 +1,10 @@
 <div *ngIf="employee" class="staff-card">
   <h2>{{ employee.name | uppercase }} Details</h2>
   <div><span>id: </span>{{ employee.id }}</div>
+  <button (click)="back()">Back</button>
   <div>
     <label for="employee-name"> Name: </label>
-    <input
-      id="employee-name"
-      [(ngModel)]="employee.name"
-      placeholder="name"
-    />
+    <input id="employee-name" [(ngModel)]="employee.name" placeholder="name" />
 
     <label for="employee-position"> Position: </label>
     <input

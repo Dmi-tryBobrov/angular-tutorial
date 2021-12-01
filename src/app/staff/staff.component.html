@@ -1,13 +1,11 @@
 <h2>Our staff</h2>
 <ul class="staff-list">
-  <li
-    *ngFor="let employee of staff"
-    [class.selected]="employee === selectedEmployee"
-    (click)="selectEmployee(employee)"
-  >
-    <span class="staff-id">{{ employee.id }}</span
-    ><span class="staff-name">{{ employee.name }}</span
-    >{{ employee.position }}
+  <li *ngFor="let employee of staff">
+    <a routerLink="/staff_card/{{ employee.id }}">
+      <span class="staff-id">{{ employee.id }}</span
+      ><span class="staff-name">{{ employee.name }}</span
+      ><span class="staff-position">{{ employee.position }}</span>
+    </a>
   </li>
 </ul>
 

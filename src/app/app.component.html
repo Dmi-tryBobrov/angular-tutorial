@@ -13,11 +13,12 @@
 <div class="app-mainframe">
   <h1>{{ title }}</h1>
   <nav>
-    <a href="#">Dashboard</a>
-    <a href="#">Staff</a>
+    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/staff" routerLinkActive="active">Staff</a>
   </nav>
-
-  <app-staff></app-staff>
+  <router-outlet></router-outlet>
+  <!-- <app-top-staff></app-top-staff>
+  <app-staff></app-staff> -->
 </div>
 
-<router-outlet></router-outlet>
+<app-messages></app-messages>

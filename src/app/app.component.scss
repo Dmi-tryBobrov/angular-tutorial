@@ -65,11 +65,14 @@ nav {
 
     &:hover {
       color: white;
-      background-color: #42545c;
+      background-color: midnightblue;
     }
 
     &.active {
-      background-color: black;
+      background-color: midnightblue;
+      color: white;
+      box-shadow: 3px -3px 3px 2px inset rgba(0, 0, 0, 0.3),
+        -3px 3px 3px 2px inset rgba(0, 0, 0, 0.3);
     }
   }
 }
