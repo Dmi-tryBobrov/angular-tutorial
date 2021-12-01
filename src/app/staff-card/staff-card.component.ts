@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IStaff } from '../staff-interface';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -11,7 +11,7 @@ import { LoadStaffService } from '../load-staff.service';
 })
 export class StaffCardComponent implements OnInit {
 
-  @Input() employee?: IStaff;
+  employee?: IStaff;
 
   constructor(private route: ActivatedRoute,
     private location: Location,
@@ -30,5 +30,12 @@ export class StaffCardComponent implements OnInit {
 
   back(): void{
     this.location.back();
+  }
+
+  save(): void{
+    if(this.employee){
+      this.loadStaffService.updateStaff(this.employee).
+      subscribe(() => this.back());
+    }
   }
 }

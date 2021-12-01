@@ -1,7 +1,22 @@
 .staff-card {
   margin: 2rem 2rem 2rem 0rem;
+  padding: 2rem;
+  padding-top: 0;
+  border: 2px dashed midnightblue;
+}
+
+.staff-card-input {
+  display: flex;
+  flex-flow: column nowrap;
+  max-width: 50%;
+  // justify-content: flex-start;
+  align-items: flex-start;
 }
 
 input {
-  padding: 0.1rem;
+  margin: 0.5rem;
+  padding: 0.2rem;
+  border: 2px solid midnightblue;
+  border-radius: 5px;
+  width: fit-content;
 }

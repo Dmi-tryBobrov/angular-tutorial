@@ -2,13 +2,26 @@
   <h2>{{ employee.name | uppercase }} Details</h2>
   <div><span>id: </span>{{ employee.id }}</div>
   <button (click)="back()">Back</button>
-  <div>
+  <button (click)="save()">Save changes</button>
+  <div class="staff-card-input">
     <label for="employee-name"> Name: </label>
-    <input id="employee-name" [(ngModel)]="employee.name" placeholder="name" />
+    <input
+      type="text"
+      size="50"
+      maxlength="50"
+      id="employee-name"
+      [(ngModel)]="employee.name"
+      placeholder="name"
+    />
+
+    <br />
 
     <label for="employee-position"> Position: </label>
     <input
+      type="text"
       id="employee-position"
+      size="50"
+      maxlength="50"
       [(ngModel)]="employee.position"
       placeholder="position"
     />

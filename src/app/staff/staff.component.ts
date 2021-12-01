@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IStaff } from '../staff-interface';
 import { LoadStaffService } from '../load-staff.service';
-import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-staff',
@@ -11,10 +10,8 @@ import { MessageService } from '../message.service';
 export class StaffComponent implements OnInit {
 
   staff: IStaff[] = [];
-  selectedEmployee?: IStaff;
 
-  constructor(private loadStaffService: LoadStaffService,
-    private messageService: MessageService) { }
+  constructor(private loadStaffService: LoadStaffService) { }
 
   ngOnInit(): void {
     this.getStaff();
@@ -25,9 +22,9 @@ export class StaffComponent implements OnInit {
     subscribe(staff => this.staff = staff);
   }
 
-  selectEmployee(empl: IStaff): void{
-    this.selectedEmployee = empl;
-    this.messageService.add(`StaffComponent: Selected employee id=${empl.id}`);
+  delete(employee: IStaff): void{
+    this.staff = this.staff.filter(empl => empl !== employee);
+    this.loadStaffService.deleteStaffCardById(employee.id).subscribe();
   }
 
 }
