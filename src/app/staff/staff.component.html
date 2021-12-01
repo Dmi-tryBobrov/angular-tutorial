@@ -1,0 +1,14 @@
+<h2>Our staff</h2>
+<ul class="staff-list">
+  <li
+    *ngFor="let employee of staff"
+    [class.selected]="employee === selectedEmployee"
+    (click)="selectEmployee(employee)"
+  >
+    <span class="staff-id">{{ employee.id }}</span
+    ><span class="staff-name">{{ employee.name }}</span
+    >{{ employee.position }}
+  </li>
+</ul>
+
+<app-staff-card [employee]="selectedEmployee"></app-staff-card>

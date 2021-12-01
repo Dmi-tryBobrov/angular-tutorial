@@ -1,10 +1,9 @@
-/**
-    * Header CSS
-    */
+/*Header CSS */
+
 .header-container {
   position: sticky;
-  margin: 0;
-  /* top: 0px; */
+  margin-top: 0;
+  // top: 0px;
   //   min-width: 100vw;
   display: flex;
   flex-flow: row nowrap;
@@ -33,12 +32,44 @@
   font-size: 1.25rem;
   user-select: none;
 }
-.header-menu_login .material-icons {
-  /* font-size: 1.25rem; */
-  vertical-align: middle;
+
+.header-menu_login {
+  .material-icons {
+    /* font-size: 1.25rem; */
+    vertical-align: middle;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+  }
 }
 
-.header-menu_login:hover {
-  background-color: rgba(0, 0, 0, 0.5);
-  cursor: pointer;
+/* Main frame*/
+.app-mainframe {
+  margin-left: 2rem;
+}
+h1 {
+  margin-bottom: 0;
+}
+
+nav {
+  a {
+    padding: 1rem;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #e8e8e8;
+    color: #3d3d3d;
+    border-radius: 4px;
+
+    &:hover {
+      color: white;
+      background-color: #42545c;
+    }
+
+    &.active {
+      background-color: black;
+    }
+  }
 }

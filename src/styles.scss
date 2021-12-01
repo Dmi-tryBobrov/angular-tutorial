@@ -19,19 +19,15 @@ html {
 *:after {
   box-sizing: inherit;
 }
+@mixin default-fonts() {
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-/**
-   * Body CSS
-   */
+/* Body CSS */
 body {
   margin: 0;
   padding: 0px;
 }
-
-// .app-root {
-//   padding: 0px;
-//   margin: 0;
-// }
 
 html,
 body,
@@ -41,4 +37,80 @@ button {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+
+/* Application-wide Styles */
+h1 {
+  color: #369;
+  //   font-family: Arial, Helvetica, sans-serif;
+  @include default-fonts();
+  font-size: 250%;
+}
+h2,
+h3 {
+  color: #444;
+  //   font-family: Arial, Helvetica, sans-serif;
+  @include default-fonts();
+  font-weight: lighter;
+}
+
+body,
+input[type="text"],
+button {
+  color: #333;
+  font-family: Cambria, Georgia, serif;
+}
+/* everywhere else */
+* {
+  //   font-family: Arial, Helvetica, sans-serif;
+  @include default-fonts();
+}
+
+/*Application buttons*/
+button {
+  background-color: #eee;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: black;
+  font-size: 1.2rem;
+  padding: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+
+  &:disabled {
+    background-color: #eee;
+    color: #aaa;
+    cursor: auto;
+  }
+}
+
+/* Navigation link styles */
+nav {
+  a {
+    padding: 5px 10px;
+    text-decoration: none;
+    margin-right: 10px;
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #e8e8e8;
+    color: #3d3d3d;
+    border-radius: 4px;
+
+    &:hover {
+      color: white;
+      background-color: #42545c;
+    }
+
+    &.active {
+      background-color: black;
+      color: white;
+    }
+  }
 }
