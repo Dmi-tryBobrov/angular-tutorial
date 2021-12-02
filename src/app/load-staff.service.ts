@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { IStaff } from './staff-interface';
-import { STAFF } from './staff';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -52,5 +51,15 @@ export class LoadStaffService {
     const url = `${this.urlToDb}/${id}}`;
     return this.http.delete(url, this.httpOptions).
     pipe(catchError(this.onError<any>('Delete failed')));
+  }
+
+  searchStaff(searchString: string): Observable<IStaff[]>{
+    const query = searchString.trim();
+    if(!query)
+      return of([]);
+    
+    const url = `${this.urlToDb}/?name=${query}`;
+    return this.http.get<IStaff[]>(url).
+      pipe(catchError(this.onError<IStaff[]>('Search failed')))
   }
 }
