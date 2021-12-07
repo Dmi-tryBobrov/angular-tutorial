@@ -62,4 +62,10 @@ export class LoadStaffService {
     return this.http.get<IStaff[]>(url).
       pipe(catchError(this.onError<IStaff[]>('Search failed')))
   }
+
+  addNewStaffCard(employee: IStaff): Observable<IStaff>{
+    return this.http.post<IStaff>(this.urlToDb, employee, this.httpOptions).
+    pipe(tap((newEmpl: IStaff) => this.log(`Posted to the server with id=${newEmpl.id}`)),
+    catchError(this.onError<IStaff>('Failed to add new employee')));
+  }
 }

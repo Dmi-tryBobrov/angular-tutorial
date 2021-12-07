@@ -13,7 +13,8 @@ export class StaffCardComponent implements OnInit {
 
   employee?: IStaff;
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private route: ActivatedRoute,
     private location: Location,
     private loadStaffService: LoadStaffService
     ) { }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { IStaff } from '../staff-interface';
 import { LoadStaffService } from '../services/load-staff.service';
 
@@ -10,12 +12,20 @@ import { LoadStaffService } from '../services/load-staff.service';
 export class StaffComponent implements OnInit {
 
   staff: IStaff[] = [];
+  add_form_active = false;
 
-  constructor(private loadStaffService: LoadStaffService) { }
+  constructor(
+    private loadStaffService: LoadStaffService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
     this.getStaff();
   }
+
+  // ngAfterViewChecked(): void {
+  //   this.add_form_active = false;
+  // }
 
   getStaff(): void{
     this.loadStaffService.getStaff().
@@ -27,4 +37,19 @@ export class StaffComponent implements OnInit {
     this.loadStaffService.deleteStaffCardById(employee.id).subscribe();
   }
 
+  displayAddForm(): void{
+    // this.router.navigate(['/staff/add_staff']);
+    this.add_form_active = true;
+  }
+
+  addEmployee(employee: IStaff): void {
+    this.loadStaffService.addNewStaffCard(employee)
+    .subscribe(newEmpl => {
+      this.staff.push(newEmpl);
+      this.back()});
+  }
+
+  back(){
+    this.add_form_active = false;
+  }
 }

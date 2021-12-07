@@ -1,0 +1,62 @@
+<h2>Add new employee</h2>
+
+<form
+  class="staff-card"
+  [formGroup]="newEmplForm"
+  #formEmpl="ngForm"
+  (ngSubmit)="save(name.value, position.value)"
+>
+  <div class="staff-card-input">
+    <label for="name">Name: </label>
+    <input
+      formControlName="name"
+      id="name"
+      type="text"
+      size="50"
+      maxlength="51"
+      required
+    />
+
+    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+      <div *ngIf="name.errors?.['minlength']">
+        Type at least two characters.
+      </div>
+
+      <div *ngIf="name.errors?.['maxlength']">
+        Unfortunately no more than 50 characters allowed.
+      </div>
+
+      <div *ngIf="name.errors?.['required']">Name is required.</div>
+    </div>
+    <br />
+
+    <label for="position">Position: </label>
+    <input
+      formControlName="position"
+      id="position"
+      type="text"
+      size="50"
+      maxlength="50"
+      required
+    />
+
+    <div
+      *ngIf="position.invalid && (position.dirty || position.touched)"
+      class="alert"
+    >
+      <div *ngIf="position.errors?.['minlength']">
+        Type at least two characters.
+      </div>
+
+      <div *ngIf="position.errors?.['maxlength']">
+        Unfortunately no more than 50 characters allowed.
+      </div>
+
+      <div *ngIf="position.errors?.['required']">position is required.</div>
+    </div>
+  </div>
+
+  <button (click)="back()">Back</button>
+  <button type="submit" [disabled]="formEmpl.invalid">Save</button>
+  <button type="button" (click)="formEmpl.resetForm('')">Reset</button>
+</form>

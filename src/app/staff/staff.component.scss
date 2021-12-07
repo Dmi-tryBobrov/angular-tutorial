@@ -1,10 +1,11 @@
 $border-radius: 4px;
+$list-content-width: 50vw;
 
 .staff-list {
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  max-width: calc(50vw + 3.2rem);
+  max-width: calc($list-content-width + 3.2rem);
   display: flex;
   flex-flow: column nowrap;
   gap: 1rem;
@@ -84,6 +85,7 @@ $border-radius: 4px;
   }
 }
 
+/* buttons*/
 button.delete {
   background-color: white;
   color: #525252;
@@ -96,4 +98,11 @@ button.delete {
 button.delete:hover {
   background-color: crimson;
   color: white;
+}
+
+.add-staff-card {
+  position: fixed;
+  // left: calc($list-content-width + 10vw);
+  right: 3vw;
+  bottom: 3vh;
 }
