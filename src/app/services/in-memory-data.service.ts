@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { IStaff } from './staff-interface';
+import { IStaff } from '../staff-interface';
 
 @Injectable({
   providedIn: 'root'

@@ -12,7 +12,7 @@ import { StaffComponent } from './staff/staff.component';
 import { StaffCardComponent } from './staff-card/staff-card.component';
 import { MessagesComponent } from './messages/messages.component';
 import { TopStaffComponent } from './top-staff/top-staff.component';
-import { InMemoryDataService } from './in-memory-data.service';
+import { InMemoryDataService } from './services/in-memory-data.service';
 import { StaffCardSearchComponent } from './staff-card-search/staff-card-search.component';
 
 @NgModule({

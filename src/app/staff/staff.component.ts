@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IStaff } from '../staff-interface';
-import { LoadStaffService } from '../load-staff.service';
+import { LoadStaffService } from '../services/load-staff.service';
 
 @Component({
   selector: 'app-staff',

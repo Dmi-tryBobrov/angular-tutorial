@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IStaff } from '../staff-interface';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { LoadStaffService } from '../load-staff.service';
+import { LoadStaffService } from '../services/load-staff.service';
 
 @Component({
   selector: 'app-staff-card',

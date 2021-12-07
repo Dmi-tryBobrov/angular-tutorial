@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadStaffService } from '../load-staff.service';
+import { LoadStaffService } from '../services/load-staff.service';
 import { IStaff } from '../staff-interface';
 
 
