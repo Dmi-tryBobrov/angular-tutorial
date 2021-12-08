@@ -28,11 +28,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule,
-    HttpClientModule, 
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation: false}
-    )
   ],
   providers: [],
   bootstrap: [AppComponent]

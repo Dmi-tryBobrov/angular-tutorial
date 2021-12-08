@@ -17,8 +17,15 @@ export class TopStaffComponent implements OnInit {
     this.displayTopStaff();
   }
 
-  displayTopStaff(): void{
+  displayTopStaff(): void {
     this.loadStaffService.getStaff().
-    subscribe(topStaff => this.topStaff = topStaff.slice(0, 5));
+    subscribe(topStaff => {
+      for (let empl of topStaff){
+        if(empl)
+          this.topStaff.push(empl);
+      }
+
+      this.topStaff = this.topStaff.slice(0, 5);
+    });
   }
 }

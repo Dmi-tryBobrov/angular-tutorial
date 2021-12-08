@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { IStaff } from '../staff-interface';
 import { LoadStaffService } from '../services/load-staff.service';
+import { JsonParseService } from '../services/json-parse.service';
 
 @Component({
   selector: 'app-staff',
@@ -16,7 +17,8 @@ export class StaffComponent implements OnInit {
 
   constructor(
     private loadStaffService: LoadStaffService,
-    private router: Router
+    private router: Router,
+    private jsonParseService: JsonParseService
     ) { }
 
   ngOnInit(): void {
@@ -25,11 +27,18 @@ export class StaffComponent implements OnInit {
 
   // ngAfterViewChecked(): void {
   //   this.add_form_active = false;
+  // this.jsonParseService.parseJson(staff)
   // }
+
 
   getStaff(): void{
     this.loadStaffService.getStaff().
-    subscribe(staff => this.staff = staff);
+    subscribe(staff => {
+      for (let empl of staff){
+        if(empl)
+          this.staff.push(empl);
+      }
+    });
   }
 
   delete(employee: IStaff): void{
@@ -42,11 +51,13 @@ export class StaffComponent implements OnInit {
     this.add_form_active = true;
   }
 
-  addEmployee(employee: IStaff): void {
+  addEmployee(employee: Partial<IStaff>): void {
+
     this.loadStaffService.addNewStaffCard(employee)
     .subscribe(newEmpl => {
       this.staff.push(newEmpl);
-      this.back()});
+      this.back()
+    });
   }
 
   back(){
