@@ -7,14 +7,19 @@
         ><span class="staff-name">{{ employee.name }}</span
         ><span class="staff-position">{{ employee.position }}</span>
       </a>
-      <button class="delete" title="delete card" (click)="delete(employee)">
+      <button
+        *ngIf="isLoggedIn"
+        class="delete"
+        title="delete card"
+        (click)="delete(employee)"
+      >
         x
       </button>
     </li>
   </ul>
 </div>
 <button
-  *ngIf="!add_form_active"
+  *ngIf="!add_form_active && isLoggedIn"
   class="add-staff-card"
   (click)="displayAddForm()"
 >

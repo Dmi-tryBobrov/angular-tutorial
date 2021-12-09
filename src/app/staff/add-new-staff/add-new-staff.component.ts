@@ -45,7 +45,7 @@ export class AddNewStaffComponent implements OnInit {
     this.goBack.emit();
   }
 
-  save(name:string, position: string): void{
+  save(name: string, position: string): void{
     name = name.trim();
     position = position.trim();
     if(!name || !position) {return;}

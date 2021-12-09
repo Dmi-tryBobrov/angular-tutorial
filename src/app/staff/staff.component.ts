@@ -1,34 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { IStaff } from '../staff-interface';
 import { LoadStaffService } from '../services/load-staff.service';
-import { JsonParseService } from '../services/json-parse.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-staff',
   templateUrl: './staff.component.html',
   styleUrls: ['./staff.component.scss']
 })
-export class StaffComponent implements OnInit {
+export class StaffComponent implements OnInit, AfterViewChecked {
 
   staff: IStaff[] = [];
   add_form_active = false;
+  isLoggedIn = false;
 
   constructor(
     private loadStaffService: LoadStaffService,
     private router: Router,
-    private jsonParseService: JsonParseService
+    private authService: AuthService
     ) { }
 
   ngOnInit(): void {
     this.getStaff();
   }
 
-  // ngAfterViewChecked(): void {
-  //   this.add_form_active = false;
-  // this.jsonParseService.parseJson(staff)
-  // }
+  ngAfterViewChecked(): void {
+    this.isLoggedIn = this.authService.isLoggedIn();
+  }
 
 
   getStaff(): void{

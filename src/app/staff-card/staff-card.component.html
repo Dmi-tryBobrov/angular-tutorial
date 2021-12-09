@@ -2,7 +2,7 @@
   <h2>{{ employee.name | uppercase }} Details</h2>
   <div><span>id: </span>{{ employee.id }}</div>
   <button (click)="back()">Back</button>
-  <button (click)="save()">Save changes</button>
+  <button *ngIf="isLoggedIn" (click)="save()">Save changes</button>
   <div class="staff-card-input">
     <label for="employee-name"> Name: </label>
     <input

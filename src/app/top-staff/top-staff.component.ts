@@ -21,7 +21,7 @@ export class TopStaffComponent implements OnInit {
     this.loadStaffService.getStaff().
     subscribe(topStaff => {
       for (let empl of topStaff){
-        if(empl)
+        if(empl && empl.employeeOfTheMonth)
           this.topStaff.push(empl);
       }
 

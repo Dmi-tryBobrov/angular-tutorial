@@ -3,8 +3,7 @@ import { Observable, of } from 'rxjs';
 import { IStaff } from '../staff-interface';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap, switchMap, switchMapTo } from 'rxjs/operators';
-import { MonoTypeOperatorFunction } from 'rxjs/index';
+import { catchError, map, tap, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

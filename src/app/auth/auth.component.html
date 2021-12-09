@@ -1,0 +1,53 @@
+<h2><b>Sign in</b></h2>
+
+<form
+  class="staff-card"
+  [formGroup]="authForm"
+  #authFormId="ngForm"
+  (ngSubmit)="signIn(email.value, password.value)"
+>
+  <div class="staff-card-input">
+    <label for="email">Email: </label>
+    <input
+      formControlName="email"
+      id="email"
+      type="email"
+      size="50"
+      placeholder="test@test.com"
+      required
+    />
+
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
+      <div *ngIf="email.errors?.['email']">
+        Email must be of type example@example.example.
+      </div>
+      <div *ngIf="email.errors?.['required']">Email is required.</div>
+    </div>
+    <br />
+
+    <label for="password">Password: </label>
+    <input
+      formControlName="password"
+      id="password"
+      type="password"
+      size="50"
+      placeholder="123456"
+      required
+    />
+
+    <div
+      *ngIf="password.invalid && (password.dirty || password.touched)"
+      class="alert"
+    >
+      <div *ngIf="password.errors?.['minlength']">
+        Type at least six characters.
+      </div>
+
+      <div *ngIf="password.errors?.['required']">Password is required.</div>
+    </div>
+  </div>
+
+  <button (click)="back()">Back</button>
+  <button type="submit" [disabled]="authFormId.invalid">Save</button>
+  <button type="button" (click)="authFormId.resetForm('')">Reset</button>
+</form>

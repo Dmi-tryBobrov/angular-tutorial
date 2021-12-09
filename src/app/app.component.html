@@ -4,8 +4,14 @@
   <div class="header-menu">
     <div class="header-menu_item">About</div>
     <div class="header-menu_item">Test</div>
+
     <div class="header-menu_item">
-      Login <span class="material-icons"> login </span>
+      <div *ngIf="!loggedIn; else elseBlock">
+        <a routerLink="/auth" routerLinkActive="active">
+          Login <span class="material-icons"> login </span>
+        </a>
+      </div>
+      <ng-template #elseBlock>Logged In</ng-template>
     </div>
   </div>
   <!-- </div> -->
