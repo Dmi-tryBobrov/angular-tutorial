@@ -8,11 +8,29 @@
     <input
       type="text"
       size="50"
-      maxlength="50"
+      minlength="2"
+      maxlength="51"
       id="employee-name"
       [(ngModel)]="employee.name"
-      placeholder="name"
+      required
+      #emplName="ngModel"
+      [disabled]="!isLoggedIn"
+      appMaxLength="50"
     />
+    <div
+      *ngIf="emplName.invalid && (emplName.dirty || emplName.touched)"
+      class="alert"
+    >
+      <div *ngIf="emplName.errors?.['minlength']">
+        Type at least two characters.
+      </div>
+
+      <div *ngIf="emplName.errors?.['maxLength']">
+        Unfortunately no more than 50 characters allowed.
+      </div>
+
+      <div *ngIf="emplName.errors?.['required']">Name is required.</div>
+    </div>
 
     <br />
 
@@ -21,9 +39,30 @@
       type="text"
       id="employee-position"
       size="50"
-      maxlength="50"
+      minlength="2"
+      maxlength="51"
       [(ngModel)]="employee.position"
-      placeholder="position"
+      required
+      #emplPosition="ngModel"
+      [disabled]="!isLoggedIn"
+      appMaxLength="50"
     />
+
+    <div
+      *ngIf="
+        emplPosition.invalid && (emplPosition.dirty || emplPosition.touched)
+      "
+      class="alert"
+    >
+      <div *ngIf="emplPosition.errors?.['minlength']">
+        Type at least two characters.
+      </div>
+
+      <div *ngIf="emplPosition.errors?.['maxlength']">
+        Unfortunately no more than 50 characters allowed.
+      </div>
+
+      <div *ngIf="emplPosition.errors?.['required']">Position is required.</div>
+    </div>
   </div>
 </div>

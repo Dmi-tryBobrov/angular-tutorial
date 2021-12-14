@@ -16,6 +16,7 @@ import { TopStaffComponent } from './top-staff/top-staff.component';
 import { StaffCardSearchComponent } from './staff-card-search/staff-card-search.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthComponent } from './auth/auth.component';
+import { MaxLengthDirective } from './shared/max-length.directive';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AuthComponent } from './auth/auth.component';
     StaffCardSearchComponent,
     NotFoundComponent,
     AuthComponent,
+    MaxLengthDirective,
   ],
   imports: [
     BrowserModule,
