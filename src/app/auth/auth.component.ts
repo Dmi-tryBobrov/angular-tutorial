@@ -43,8 +43,10 @@ export class AuthComponent implements OnInit {
     console.log(email, password);
 
     this.authService.authWithEmailPassword(email, password)
-    .subscribe(res => this.authService.getIdToken(res));
-    this.back();
+    .subscribe(res => {
+      this.authService.storeIdToken(res);
+      this.back();
+    });
   }
 
 }

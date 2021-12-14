@@ -39,8 +39,12 @@ export class AuthService {
     );
   }
 
-  getIdToken(res: SignInEmailPassResponce): void {
+  storeIdToken(res: SignInEmailPassResponce): void {
     this.idToken = res.idToken;
+  }
+
+  getIdToken(): string {
+    return this.idToken;
   }
 
   isLoggedIn(): boolean {

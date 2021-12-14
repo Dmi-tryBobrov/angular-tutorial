@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -6,14 +6,14 @@ import { AuthService } from './services/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewChecked{
-  title = 'Navigation menu';
-  loggedIn = false;
+export class AppComponent implements AfterContentChecked {
+  public title = 'Navigation menu';
+  public loggedIn = false;
   
   constructor(private authService: AuthService){}
-  
-  ngAfterViewChecked(): void {
+
+  ngAfterContentChecked(): void {
     this.loggedIn = this.authService.isLoggedIn();
   }
-  
+    
 }

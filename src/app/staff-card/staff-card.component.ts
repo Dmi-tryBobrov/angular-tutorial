@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './staff-card.component.html',
   styleUrls: ['./staff-card.component.scss']
 })
-export class StaffCardComponent implements OnInit, AfterViewChecked {
+export class StaffCardComponent implements OnInit {
 
   employee?: IStaff;
   isLoggedIn = false;
@@ -24,9 +24,6 @@ export class StaffCardComponent implements OnInit, AfterViewChecked {
 
   ngOnInit(): void {
     this.getStaffCard();
-  }
-
-  ngAfterViewChecked(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
   }
 

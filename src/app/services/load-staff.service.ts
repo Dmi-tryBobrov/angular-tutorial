@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { IStaff } from '../staff-interface';
-import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap, switchMap } from 'rxjs/operators';
+
+import { AuthService } from './auth.service';
+import { IStaff } from '../staff-interface';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +13,13 @@ import { catchError, map, tap, switchMap } from 'rxjs/operators';
 export class LoadStaffService {
 
   // private urlToDb = 'api/staff';
-  private urlToDb = 'https://angular-staff-start-default-rtdb.europe-west1.firebasedatabase.app/staff.json';
-  private urlToDel = 'https://angular-staff-start-default-rtdb.europe-west1.firebasedatabase.app/staff';
+  private urlToGetStaff = 'https://angular-staff-start-default-rtdb.europe-west1.firebasedatabase.app/staff.json';
+  private urlToStaff = 'https://angular-staff-start-default-rtdb.europe-west1.firebasedatabase.app/staff';
   private httpOptions = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
 
-  constructor(private http: HttpClient, private messageService: MessageService) { }
+  constructor(private http: HttpClient,
+              private messageService: MessageService,
+              private authService: AuthService) { }
 
   private log(message: string): void{
     this.messageService.add(`LoadStaffService: ${message}`);
@@ -32,39 +36,35 @@ export class LoadStaffService {
     }
   }
 
-  //'[{"id": 10, "name": "Sue", "position": "Teacher"}]'
   getStaff(): Observable<IStaff[]>{
-    return this.http.get<IStaff[]>(this.urlToDb).
+    return this.http.get<IStaff[]>(this.urlToGetStaff).
     pipe(catchError(this.onError<IStaff[]>("Staff loading failed", [])));
   }
 
   getStaffCardById(id: number): Observable<IStaff>{
-    const url = `${this.urlToDb}/?orderBy="id"&equalTo=${id}`;
+    const url = `${this.urlToGetStaff}/?orderBy="id"&equalTo=${id}`;
     return this.http.get<IStaff[]>(url).
     pipe(map(staff => Object.values(staff)[0]),
     catchError(this.onError<IStaff>('Loading failed')));
   }
 
   updateStaff(employee: IStaff): Observable<any>{
-    const url = `${this.urlToDb}/?orderBy="id"&equalTo=${employee.id}`;
+    const url = `${this.urlToGetStaff}/?orderBy="id"&equalTo=${employee.id}`;
     return this.http.get<IStaff[]>(url).
     pipe(map(staff => Object.keys(staff)[0]),
-    switchMap((pos: string) => this.http.put(`${this.urlToDel}/${pos}.json`, employee, this.httpOptions)),
+    switchMap((pos: string) =>
+    this.http.put(`${this.urlToStaff}/${pos}.json?auth=${this.authService.getIdToken()}`,
+    employee, this.httpOptions)),
     catchError(this.onError<any>('Delete failed')));
-
-    // return this.http.put(this.urlToDb, employee, this.httpOptions).
-    // pipe(catchError(this.onError<any>('Update failed')));
   }
 
   deleteStaffCardById(id: number): Observable<any>{
-    const url = `${this.urlToDb}/?orderBy="id"&equalTo=${id}`;
+    const url = `${this.urlToGetStaff}/?orderBy="id"&equalTo=${id}`;
     return this.http.get<IStaff[]>(url).
     pipe(map(staff => Object.keys(staff)[0]),
-    switchMap((pos: string) => this.http.delete(`${this.urlToDel}/${pos}.json`)),
+    switchMap((pos: string) => 
+    this.http.delete(`${this.urlToStaff}/${pos}.json?auth=${this.authService.getIdToken()}`)),
     catchError(this.onError<any>('Delete failed')));
-    // const url = ;
-    // return this.http.delete(url).
-    // pipe(catchError(this.onError<any>('Delete failed')));
   }
 
   searchStaff(searchString: string): Observable<IStaff[]>{
@@ -73,7 +73,7 @@ export class LoadStaffService {
       return of([]);
     
     const db_query = `?orderBy="name"&startAt="${query}"`
-    const url = `${this.urlToDb}${db_query}`;
+    const url = `${this.urlToGetStaff}${db_query}`;
     return this.http.get<IStaff[]>(url).
       pipe(map(staff => Object.values(staff)),
       catchError(this.onError<IStaff[]>('Search failed')))
@@ -82,7 +82,7 @@ export class LoadStaffService {
   addNewStaffCard(employee: Partial<IStaff>): Observable<IStaff>{
     let id: number;
     let pos: string;
-    return this.http.get<IStaff[]>(this.urlToDb).pipe(
+    return this.http.get<IStaff[]>(this.urlToGetStaff).pipe(
       tap(staff => {
           let flag = true;
           if(!staff || staff.length === 0){
@@ -108,13 +108,9 @@ export class LoadStaffService {
         return staff;
       }),
       switchMap((staff: IStaff[]) => 
-      this.http.put<IStaff>(`${this.urlToDel}/${pos}.json`, employee, this.httpOptions).
+      this.http.put<IStaff>(`${this.urlToStaff}/${pos}.json?auth=${this.authService.getIdToken()}`,
+      employee, this.httpOptions).
       pipe(tap((newEmpl: IStaff) => this.log(`Posted to the server with id=${newEmpl.id}`)),
       catchError(this.onError<IStaff>('Failed to add new employee')))));
-
-
-    // return this.http.post<IStaff>(this.urlToDb, employee, this.httpOptions).
-    // pipe(tap((newEmpl: IStaff) => this.log(`Posted to the server with id=${newEmpl.id}`)),
-    // catchError(this.onError<IStaff>('Failed to add new employee')));
   }
 }
