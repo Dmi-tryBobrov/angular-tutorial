@@ -2,6 +2,7 @@ import { ApplicationRef, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,12 @@ export class AuthService {
   private urlToAuth = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.apiKey}`;
   private idToken = '';
   private timerExpireId?: ReturnType<typeof setTimeout>;
+  //redirect after successful log in to guarded url
+  public redirectUrl: string | null = null;
 
   constructor(
     private http: HttpClient,
+    private router: Router,
     private appRef: ApplicationRef
   ) { }
 
@@ -72,6 +76,13 @@ export class AuthService {
     this.idToken = '';
     if(this.timerExpireId)
       clearTimeout(this.timerExpireId);
+  }
+
+  redirectToGuardedRoute(): void{
+    if(!this.redirectUrl) {return;}
+    console.warn(this.redirectUrl);
+    this.router.navigate([this.redirectUrl]);
+    this.redirectUrl = null;
   }
 
 }

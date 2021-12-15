@@ -1,5 +1,6 @@
 import { AfterContentChecked, AfterViewChecked, ChangeDetectorRef, Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { LoadingStateService } from './services/loading-state.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,11 @@ export class AppComponent implements AfterContentChecked {
   public title = 'Navigation menu';
   public loggedIn = false;
   
+  //for spinner
+  public loading$ = this.loadingState.loadState$;
+  
   constructor(private authService: AuthService,
-              private changeDetector: ChangeDetectorRef){}
+              private loadingState: LoadingStateService){}
 
   ngAfterContentChecked(): void {
     this.loggedIn = this.authService.isLoggedIn();

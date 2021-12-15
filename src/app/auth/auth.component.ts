@@ -45,7 +45,10 @@ export class AuthComponent implements OnInit {
     this.authService.authWithEmailPassword(email, password)
     .subscribe(res => {
       this.authService.storeIdToken(res);
-      this.back();
+      if(!this.authService.redirectUrl)
+        this.back();
+      else
+        this.authService.redirectToGuardedRoute();
     });
   }
 

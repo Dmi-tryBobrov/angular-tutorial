@@ -5,8 +5,10 @@ import { StaffComponent } from './staff/staff.component';
 import { StaffCardComponent } from './staff-card/staff-card.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthComponent } from './auth/auth.component';
+import { AdminComponent } from './admin/admin.component';
 
 import { CustomPreloadingStrategyService } from './services/custom-preloading-strategy.service';
+import { AdminGuard } from './auth/admin.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -17,6 +19,7 @@ const routes: Routes = [
     data: {preload: true}
   },
   {path: 'auth', component: AuthComponent},
+  {path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
   {path: 'staff_card/:id', component: StaffCardComponent},
   {path: '**', component: NotFoundComponent}
 ];

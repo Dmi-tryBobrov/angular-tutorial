@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-
-import { InMemoryDataService } from './services/in-memory-data.service';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -17,6 +15,10 @@ import { StaffCardSearchComponent } from './staff-card-search/staff-card-search.
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthComponent } from './auth/auth.component';
 import { MaxLengthDirective } from './shared/max-length.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -28,15 +30,24 @@ import { MaxLengthDirective } from './shared/max-length.directive';
     NotFoundComponent,
     AuthComponent,
     MaxLengthDirective,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SpinnerInterceptor,
+      multi: true 
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

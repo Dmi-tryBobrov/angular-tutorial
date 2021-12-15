@@ -55,11 +55,30 @@
 
 /* Main frame*/
 .app-mainframe {
+  position: relative;
   margin-left: 2rem;
   margin-right: 2rem;
 }
 h1 {
   margin-bottom: 0;
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  backdrop-filter: blur(2px);
+}
+
+mat-progress-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
 }
 
 nav {
