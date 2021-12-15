@@ -34,7 +34,8 @@ export class AddNewStaffComponent implements OnInit {
         'position', [Validators.required,
         Validators.minLength(2), Validators.maxLength(50)]
       ]
-    });
+    },
+    {updateOn: 'blur'});
   }
 
   get name() {return this.newEmplForm.get('name')!;}

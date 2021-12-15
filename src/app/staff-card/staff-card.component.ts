@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, Component, OnInit } from '@angular/core';
 import { IStaff } from '../staff-interface';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './staff-card.component.html',
   styleUrls: ['./staff-card.component.scss']
 })
-export class StaffCardComponent implements OnInit {
+export class StaffCardComponent implements OnInit, AfterContentChecked {
 
   employee?: IStaff;
   isLoggedIn = false;
@@ -24,6 +24,9 @@ export class StaffCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStaffCard();
+  }
+
+  ngAfterContentChecked(){
     this.isLoggedIn = this.authService.isLoggedIn();
   }
 

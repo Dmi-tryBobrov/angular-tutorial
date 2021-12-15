@@ -19,9 +19,8 @@ export class AppComponent implements AfterContentChecked {
 
   public logOut(): void {
     if(!this.loggedIn) return;
-    console.log('fdhffdhhgs')
     this.authService.logOut();
-    this.changeDetector.detectChanges();
+    // this.changeDetector.detectChanges();
   }
     
 }
