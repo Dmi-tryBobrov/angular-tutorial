@@ -5,13 +5,15 @@
     <div class="header-menu_item">About</div>
     <div class="header-menu_item">Test</div>
 
-    <div class="header-menu_item">
+    <div class="header-menu_item" (click)="logOut()">
       <div *ngIf="!loggedIn; else elseBlock">
         <a routerLink="/auth" routerLinkActive="active">
           Login <span class="material-icons"> login </span>
         </a>
       </div>
-      <ng-template #elseBlock>Logged In</ng-template>
+      <ng-template #elseBlock
+        >Log Out <span class="material-icons"> logout </span></ng-template
+      >
     </div>
   </div>
   <!-- </div> -->
@@ -22,8 +24,12 @@
 <div class="app-mainframe">
   <h1>{{ title }}</h1>
   <nav>
-    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-    <a routerLink="/staff" routerLinkActive="active">Staff</a>
+    <a routerLink="/dashboard" routerLinkActive="active"
+      >Dashboard <span class="material-icons"> dashboard </span></a
+    >
+    <a routerLink="/staff" routerLinkActive="active"
+      >Staff <span class="material-icons"> list </span></a
+    >
   </nav>
   <router-outlet></router-outlet>
   <!-- <app-top-staff></app-top-staff>

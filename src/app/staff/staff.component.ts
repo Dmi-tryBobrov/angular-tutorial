@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { IStaff } from '../staff-interface';
@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './staff.component.html',
   styleUrls: ['./staff.component.scss']
 })
-export class StaffComponent implements OnInit {
+export class StaffComponent implements OnInit, AfterContentChecked {
 
   staff: IStaff[] = [];
   add_form_active = false;
@@ -24,6 +24,9 @@ export class StaffComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStaff();
+  }
+
+  ngAfterContentChecked(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
   }
 

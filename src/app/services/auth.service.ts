@@ -53,6 +53,10 @@ export class AuthService {
     return false;
   }
 
+  logOut(): void {
+    this.idToken = '';
+  }
+
 }
 
 interface SignInEmailPassResponce {
