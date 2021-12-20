@@ -45,6 +45,23 @@ a {
   }
 }
 
-a:hover {
-  background-color: darkblue;
+a:hover,
+a:focus {
+  // background-color: darkblue;
+  @media screen and (min-width: 600px) {
+    --enlarge-factor: 1.2;
+  }
+  --enlarge-factor: 1.05;
+  animation: enlargeCardAnimation 300ms ease-in-out forwards;
+}
+
+@keyframes enlargeCardAnimation {
+  from {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(var(--enlarge-factor), 1.2);
+    opacity: 0.9;
+  }
 }

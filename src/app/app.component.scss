@@ -70,7 +70,14 @@ h1 {
   left: 0;
   right: 0;
   z-index: 3;
-  backdrop-filter: blur(2px);
+  background: rgba(0 0 0 / 0.5);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .wrapper {
+    background: rgba(1 1 1 / 0);
+    backdrop-filter: blur(1px);
+  }
 }
 
 mat-progress-spinner {

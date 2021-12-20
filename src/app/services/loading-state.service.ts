@@ -6,16 +6,16 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class LoadingStateService {
 
-  private loadState = new BehaviorSubject<boolean>(false);
-  public loadState$ = this.loadState.asObservable();
+  private _loadState = new BehaviorSubject<boolean>(false);
+  public loadState$ = this._loadState.asObservable();
 
   constructor() { }
 
   showSpinner() {
-    this.loadState.next(true);
+    this._loadState.next(true);
   }
 
   hideSpinner() {
-    this.loadState.next(false);
+    this._loadState.next(false);
   }
 }
