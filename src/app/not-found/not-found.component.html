@@ -1,1 +1,11 @@
-<p>not-found works!</p>
+<h2>This page doesn't exit</h2>
+
+<ng-container *ngIf="timer; else elseBlock">
+  <p>
+    Redirecting in <b>{{ timer }}s</b>
+  </p>
+</ng-container>
+
+<ng-template #elseBlock>
+  <p>Redirecting...</p>
+</ng-template>

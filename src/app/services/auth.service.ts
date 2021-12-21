@@ -75,7 +75,7 @@ export class AuthService {
   logOut(): void {
     this.idToken = '';
     if(this.timerExpireId)
-      clearTimeout(this.timerExpireId);
+      clearTimeout(this.timerExpireId); 
   }
 
   redirectToGuardedRoute(): void{
