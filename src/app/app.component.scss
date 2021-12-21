@@ -5,14 +5,16 @@
   margin-top: 0;
   top: 0px;
   z-index: 1000;
+  margin-bottom: 1rem;
   //   min-width: 100vw;
-  display: flex;
-  flex-flow: row nowrap;
-  height: 3rem;
-  justify-content: space-between;
-  align-items: center;
-  background-color: indigo;
-  color: #fff;
+
+  // display: flex;
+  // flex-flow: row nowrap;
+  height: 4rem;
+  // justify-content: space-between;
+  // align-items: center;
+  // background-color: indigo;
+  // color: #fff;
 }
 
 .header-title {

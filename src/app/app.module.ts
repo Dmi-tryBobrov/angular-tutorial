@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MaterialModule } from '../material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 import { AdminComponent } from './admin/admin.component';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AdminComponent } from './admin/admin.component';
     AuthComponent,
     MaxLengthDirective,
     AdminComponent,
+    NavigationBarComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,7 @@ import { AdminComponent } from './admin/admin.component';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatProgressSpinnerModule,
+    MaterialModule,
     AppRoutingModule,
   ],
   providers: [

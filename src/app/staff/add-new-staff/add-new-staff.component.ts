@@ -15,7 +15,7 @@ export class AddNewStaffComponent implements OnInit {
 
   @Output() newEmployee = new EventEmitter<IStaff>();
   @Output() goBack = new EventEmitter<void>();
-  newEmplForm!: FormGroup;
+  public newEmplForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -52,6 +52,9 @@ export class AddNewStaffComponent implements OnInit {
     if(!name || !position) {return;}
 
     console.log(this.newEmplForm.value);
+    /*new employee is unlikely to be employee of the month
+     *that's why that property is not filled in
+     */
     this.newEmployee.emit({name, position} as IStaff);
     // this.loadStaffService.addNewStaffCard({name, position} as IStaff)
     // .subscribe()

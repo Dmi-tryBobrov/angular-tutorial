@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { LoadStaffService } from '../services/load-staff.service';
 import { AuthService } from '../services/auth.service';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-staff-card',
@@ -12,8 +13,8 @@ import { AuthService } from '../services/auth.service';
 })
 export class StaffCardComponent implements OnInit, AfterContentChecked {
 
-  employee?: IStaff;
-  isLoggedIn = false;
+  public employee?: IStaff;
+  public isLoggedIn = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -46,4 +47,10 @@ export class StaffCardComponent implements OnInit, AfterContentChecked {
       subscribe(() => this.back());
     }
   }
+
+
+  testChange(e: MatSlideToggleChange){
+        console.log(e);
+    
+      }
 }

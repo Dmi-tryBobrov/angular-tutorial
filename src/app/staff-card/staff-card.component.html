@@ -2,7 +2,18 @@
   <h2>{{ employee.name | uppercase }} Details</h2>
   <div><span>id: </span>{{ employee.id }}</div>
   <button (click)="back()">Back</button>
-  <button *ngIf="isLoggedIn" (click)="save()">Save changes</button>
+
+  <ng-container *ngIf="isLoggedIn">
+    <button (click)="save()">Save changes</button>
+    <mat-slide-toggle
+      name="employeeMonth"
+      color="primary"
+      [(ngModel)]="employee.employeeOfTheMonth"
+      (change)="testChange($event)"
+      >Employee of the month</mat-slide-toggle
+    >
+  </ng-container>
+
   <div class="staff-card-input">
     <label for="employee-name"> Name: </label>
     <input
