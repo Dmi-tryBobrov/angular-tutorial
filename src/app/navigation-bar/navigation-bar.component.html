@@ -1,15 +1,18 @@
 <mat-toolbar fxLayout="row" color="primary" class="mat-toolbar">
   <span fxFlex>Lorem, ipsum dolor.</span>
-  <button
-    mat-button
-    *ngFor="let item of menuItems"
-    [fxShow]="item.largeScreen"
-    [fxShow.sm]="item.mediumScreen"
-    [fxShow.xs]="item.smallScreen"
-  >
-    {{ item.label }}
-    <mat-icon class="mat-icon">{{ item.icon }}</mat-icon>
-  </button>
+  <ng-container *ngFor="let item of menuItems">
+    <button
+      *ngIf="checkLabels(item.label)"
+      mat-button
+      [fxShow]="item.largeScreen"
+      [fxShow.sm]="item.mediumScreen"
+      [fxShow.xs]="item.smallScreen"
+      (click)="navigate(item.link)"
+    >
+      {{ item.label }}
+      <mat-icon class="mat-icon">{{ item.icon }}</mat-icon>
+    </button>
+  </ng-container>
   <button mat-icon-button [matMenuTriggerFor]="dropMenu">
     <mat-icon>more_vert</mat-icon>
   </button>
@@ -20,7 +23,7 @@
         [fxShow.sm]="!item.mediumScreen"
         [fxShow.xs]="!item.smallScreen"
       >
-        <button mat-menu-item>
+        <button mat-menu-item (click)="navigate(item.link)">
           <mat-icon class="mat-icon">{{ item.icon }}</mat-icon>
           {{ item.label }}
         </button>
