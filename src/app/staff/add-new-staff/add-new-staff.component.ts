@@ -56,7 +56,5 @@ export class AddNewStaffComponent implements OnInit {
      *that's why that property is not filled in
      */
     this.newEmployee.emit({name, position} as IStaff);
-    // this.loadStaffService.addNewStaffCard({name, position} as IStaff)
-    // .subscribe()
   }
 }

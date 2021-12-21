@@ -1,0 +1,33 @@
+<div *ngIf="!add_form_active">
+  <h2>Our staff</h2>
+  <ul class="staff-list">
+    <li *ngFor="let employee of staff">
+      <a routerLink="/staff/staff_card/{{ employee.id }}">
+        <span class="staff-id">{{ employee.id }}</span
+        ><span class="staff-name">{{ employee.name }}</span
+        ><span class="staff-position">{{ employee.position }}</span>
+      </a>
+      <button
+        *ngIf="isLoggedIn"
+        class="delete"
+        title="delete card"
+        (click)="delete(employee)"
+      >
+        x
+      </button>
+    </li>
+  </ul>
+</div>
+<button
+  *ngIf="!add_form_active && isLoggedIn"
+  class="add-staff-card"
+  (click)="displayAddForm()"
+>
+  Add employee
+</button>
+
+<app-add-new-staff
+  *ngIf="add_form_active"
+  (newEmployee)="addEmployee($event)"
+  (goBack)="back()"
+></app-add-new-staff>

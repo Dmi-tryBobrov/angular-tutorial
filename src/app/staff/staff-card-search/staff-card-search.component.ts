@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadStaffService } from '../services/load-staff.service';
-import { IStaff } from '../staff-interface';
+import { LoadStaffService } from '../../services/load-staff.service';
+import { IStaff } from '../../staff-interface';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap  } from 'rxjs/operators';
 

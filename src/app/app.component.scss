@@ -65,6 +65,7 @@ h1 {
   margin-bottom: 0;
 }
 
+/* Spinner */
 .wrapper {
   position: absolute;
   top: 0;
@@ -88,33 +89,4 @@ mat-progress-spinner {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 5;
-}
-
-nav {
-  a {
-    padding: 1rem;
-    text-decoration: none;
-    margin-top: 10px;
-    display: inline-block;
-    background-color: #e8e8e8;
-    color: #3d3d3d;
-    border-radius: 4px;
-
-    &:hover {
-      color: white;
-      background-color: midnightblue;
-    }
-
-    &.active {
-      background-color: midnightblue;
-      color: white;
-      box-shadow: 3px -3px 3px 2px inset rgba(0, 0, 0, 0.3),
-        -3px 3px 3px 2px inset rgba(0, 0, 0, 0.3);
-    }
-
-    .material-icons {
-      font-size: 1.25rem;
-      vertical-align: middle;
-    }
-  }
 }

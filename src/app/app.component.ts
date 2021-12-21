@@ -8,7 +8,6 @@ import { LoadingStateService } from './services/loading-state.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterContentChecked, AfterViewChecked {
-  public title = 'Navigation menu';
   public loggedIn = false;
   
   //for spinner

@@ -1,9 +1,9 @@
 import { AfterContentChecked, AfterViewChecked, Component, OnInit } from '@angular/core';
-import { IStaff } from '../staff-interface';
+import { IStaff } from '../../staff-interface';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { LoadStaffService } from '../services/load-staff.service';
-import { AuthService } from '../services/auth.service';
+import { LoadStaffService } from '../../services/load-staff.service';
+import { AuthService } from '../../services/auth.service';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
