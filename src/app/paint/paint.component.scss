@@ -1,0 +1,42 @@
+.canvas-container {
+  padding: 0.5em;
+  width: 100%;
+  height: clamp(200px, 25em, 80vh);
+  position: relative;
+}
+canvas {
+  width: 100%;
+  height: 100%;
+  border: 2px dashed indigo;
+  position: absolute;
+}
+
+#draw-layer {
+  z-index: 2;
+}
+
+#bgd-layer {
+  z-index: 1;
+}
+
+.canvas-controls {
+  margin-top: 0.5em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 2em;
+  @media screen and (max-width: 600px) {
+    flex-flow: column nowrap;
+  }
+}
+
+.line-color,
+.line-width,
+.bgd-color {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: flex-end;
+  gap: 0.5em;
+}

@@ -19,8 +19,9 @@ export class NavigationBarComponent implements OnInit, AfterContentChecked {
       largeScreen: true
     },
     {
-      label: 'Pricing',
-      icon: 'attach_money',
+      label: 'Courses',
+      icon: 'shopping_cart',
+      link: '/staff',
       smallScreen: false,
       mediumScreen: false,
       largeScreen: true
@@ -40,8 +41,9 @@ export class NavigationBarComponent implements OnInit, AfterContentChecked {
       largeScreen: true
     },
     {
-      label: 'Blog',
-      icon: 'rss_feed',
+      label: 'Draw',
+      icon: 'brush',
+      link: '/paint',
       smallScreen: false,
       mediumScreen: false,
       largeScreen: true
@@ -94,5 +96,4 @@ export class NavigationBarComponent implements OnInit, AfterContentChecked {
       
       return true;
   }
-
 }

@@ -1,0 +1,31 @@
+<p>paint works!</p>
+<div class="canvas-container">
+  <canvas id="draw-layer"></canvas>
+  <canvas id="bgd-layer"></canvas>
+</div>
+<div class="canvas-controls">
+  <button (click)="clearCanvas()">Clear</button>
+  <div class="line-width">
+    <label for="line-width">Line width:</label>
+    <input
+      type="range"
+      min="1"
+      max="5"
+      [(ngModel)]="lineWidth"
+      id="line-width"
+    />
+  </div>
+  <div class="line-color">
+    <label for="line-color">Line color:</label>
+    <input type="color" [(ngModel)]="lineColor" id="line-color" />
+  </div>
+  <div class="bgd-color">
+    <label for="bgd-color">Background:</label>
+    <input
+      type="color"
+      [(ngModel)]="backgroundColor"
+      value="backgroundColor"
+      id="bgd-color"
+    />
+  </div>
+</div>
