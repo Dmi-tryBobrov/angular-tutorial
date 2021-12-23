@@ -36,6 +36,7 @@ export class NavigationBarComponent implements OnInit, AfterContentChecked {
     {
       label: 'Showcase',
       icon: 'slideshow',
+      link: '/showcase',
       smallScreen: false,
       mediumScreen: true,
       largeScreen: true

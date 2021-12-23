@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { StaffModule } from './staff/staff.module';
+import { ShowcaseComponent } from './showcase/showcase.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { StaffModule } from './staff/staff.module';
     AuthComponent,
     MaxLengthDirective,
     NavigationBarComponent,
+    ShowcaseComponent,
   ],
   imports: [
     BrowserModule,

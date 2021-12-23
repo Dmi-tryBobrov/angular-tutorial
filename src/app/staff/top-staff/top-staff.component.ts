@@ -10,7 +10,7 @@ import { IStaff } from '../../staff-interface';
 })
 export class TopStaffComponent implements OnInit {
 
-  topStaff: IStaff[] = [];
+  public topStaff: IStaff[] = [];
   constructor(private loadStaffService: LoadStaffService) { }
 
   ngOnInit(): void {
@@ -25,7 +25,7 @@ export class TopStaffComponent implements OnInit {
           this.topStaff.push(empl);
       }
 
-      this.topStaff = this.topStaff.slice(0, 5);
+      // this.topStaff = this.topStaff.slice(0, 5);
     });
   }
 }
